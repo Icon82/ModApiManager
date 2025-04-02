@@ -12,6 +12,7 @@ public class Modorder25Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Modorder25Application.class, args);
+		
 	}
 
 }
