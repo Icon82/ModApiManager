@@ -13,8 +13,7 @@ public final class SecurityRoles {
     public static final String HAS_ROLE_USER = "hasRole('" + ROLE_USER + "')";
     public static final String HAS_ROLE_DEVELOP = "hasRole('" + ROLE_DEVELOP + "')";
     
-    
-    
+       
     public static final String HAS_DEV_OR_ADMIN = 
             "hasAnyRole('" + ROLE_ADMIN + "','" + ROLE_DEVELOP + "')";
     
