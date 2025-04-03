@@ -60,7 +60,6 @@ public class AuthController {
 		@ApiResponse(responseCode = "500", description = "Errore interno del server")
 	})
 	@PostMapping("/register")
-	@PreAuthorize(SecurityRoles.HAS_ANY_ADMIN)
 	public ResponseEntity<UserResponse> register(
 			@Parameter(description = "Dati dell'utente per la registrazione", required = true, content = @Content(schema = @Schema(implementation = UserRequest.class)))
 			@Valid @RequestBody UserRequest request) {
