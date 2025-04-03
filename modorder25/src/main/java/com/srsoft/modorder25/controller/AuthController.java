@@ -60,6 +60,7 @@ public class AuthController {
 		@ApiResponse(responseCode = "500", description = "Errore interno del server")
 	})
 	@PostMapping("/register")
+	@PreAuthorize(SecurityRoles.HAS_ANY_ADMIN)
 	public ResponseEntity<UserResponse> register(
 			@Parameter(description = "Dati dell'utente per la registrazione", required = true, content = @Content(schema = @Schema(implementation = UserRequest.class)))
 			@Valid @RequestBody UserRequest request) {
@@ -141,7 +142,7 @@ public class AuthController {
 		@ApiResponse(responseCode = "401", description = "Credenziali non valide"),
 		@ApiResponse(responseCode = "500", description = "Errore interno del server")
 	})
-	@PreAuthorize(SecurityRoles.HAS_ANY_ADMIN)
+	@PreAuthorize(SecurityRoles.HAS_ANY_STANDARD_USER)
 	public ResponseEntity<?> renewToken(@RequestHeader("Authorization") String authHeader) {
 		try {
 

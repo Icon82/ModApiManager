@@ -15,12 +15,12 @@ SELECT  'ROLE_DEVELOP' , 'Utente Developer'
 WHERE NOT EXISTS (SELECT 1 FROM roles WHERE name = 'ROLE_DEVELOP');
 
 INSERT INTO users(active, created_at, email, password, updated_at, username, permessi)
-SELECT true	, '2024-12-10 16:42:11', 'mario@mario.com', '$2a$10$4twk9mJlipxPFxQP7f/Vf.21tSVGr/DhcuP7OOWwYPZ1HvyGc/Nha', '2024-12-10 16:42:11','err',31
-WHERE NOT EXISTS (SELECT 1 FROM users WHERE username = 'err');
+SELECT true	, '2024-12-10 16:42:11', 'mario@mario.com', '$2a$11$.ZTiE9hUg1SkU9H5ZEf8s..UQWiLKIRk9wL/aX5YIHkpYmzw8Q0J6', '2024-12-10 16:42:11','cirota',31
+WHERE NOT EXISTS (SELECT 1 FROM users WHERE username = 'cirota');
 
 INSERT INTO user_roles (user_id, role_id)
 SELECT u.id, r.id  FROM users u, roles r 
-WHERE u.username = 'mario' AND r.name = 'ROLE_DEVELOP'  AND 
+WHERE u.username = 'cirota' AND r.name = 'ROLE_DEVELOP'  AND 
 NOT EXISTS ( SELECT 1  FROM user_roles ur  WHERE ur.user_id = u.id  );
 
 INSERT INTO Tipi_permessi (codice, descrizione, valore)

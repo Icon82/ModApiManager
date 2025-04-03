@@ -129,10 +129,11 @@ public class SecurityConfig {
 				.requestMatchers("/swagger-api/**").permitAll()
 				.requestMatchers("/srsoft-documentation/**", "/swagger-ui/**").permitAll()
 				.requestMatchers("/v3/api-docs/**").permitAll()
-				.requestMatchers("/auth/register").permitAll()
-				
+								
 				// Solo Autenticati
-				//.requestMatchers("/auth/register").authenticated()
+				.requestMatchers("/auth/renew").authenticated()
+				.requestMatchers("/auth/logout").authenticated()
+				.requestMatchers("/auth/register").authenticated()
 				.requestMatchers("/file/storage/**").authenticated()	      
 				.requestMatchers("/parametri/**").authenticated()	 
 				.anyRequest().authenticated()
