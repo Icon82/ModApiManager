@@ -127,7 +127,7 @@ public class SecurityConfig {
 				.requestMatchers("/auth/login").permitAll()
 				.requestMatchers("/error").permitAll()
 				.requestMatchers("/swagger-api/**").permitAll()
-				.requestMatchers("/srsoft-documentation/**", "/swagger-ui/**").permitAll()
+				.requestMatchers("/internal-doc/**", "/swagger-ui/**").permitAll()
 				.requestMatchers("/v3/api-docs/**").permitAll()
 								
 				// Solo Autenticati
