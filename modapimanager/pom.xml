@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.srsoft</groupId>
-	<artifactId>modorder25</artifactId>
+	<artifactId>modapimanager</artifactId>
 	<version>1.0.0</version>
-	<name>modorder25</name>
-	<description>Modulo di Ordini Srs Framework</description>
+	<name>modapimanager</name>
+	<description>Modulo d</description>
 	<url/>
 	<licenses>
 		<license/>
