@@ -22,12 +22,19 @@ public class WooCommerceConfig {
 
     @Value("${woocommerce.api.consumer-secret}")
     private String consumerSecret;
+    
+    
+    @Value("${woocommerce.api.connect.timeout:10}")
+    private Long connectTimeOut;
+    
+    @Value("${woocommerce.api.read.timeout:30}")
+    private Long readTimeOut;
 
     @Bean
     public RestTemplate wooCommerceRestTemplate(RestTemplateBuilder builder) {
         SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
-        factory.setConnectTimeout(Duration.ofSeconds(10));
-        factory.setReadTimeout(Duration.ofSeconds(30));
+        factory.setConnectTimeout(Duration.ofSeconds(connectTimeOut));
+        factory.setReadTimeout(Duration.ofSeconds(readTimeOut));
 
         return builder
                 .rootUri(apiUrl)
