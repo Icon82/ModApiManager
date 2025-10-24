@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import com.srsoft.modapimanager.config.SecurityRoles;
 import com.srsoft.modapimanager.entity.UserLoginHistory;
 import com.srsoft.modapimanager.service.LoginTrackingService;
 import com.srsoft.modapimanager.service.UserService;
@@ -21,19 +22,19 @@ public class LoginHistoryController {
     private final UserService userService;
 
     @GetMapping("/user/{userId}")
-    @PreAuthorize("hasRole('ADMIN') or #userId == authentication.principal.id")
+    @PreAuthorize(SecurityRoles.HAS_ANY_ADMIN)
     public ResponseEntity<List<UserLoginHistory>> getUserLoginHistory(@PathVariable Long userId) {
         return ResponseEntity.ok(loginTrackingService.getLoginHistory(userService.findById(userId)));
     }
 
     @GetMapping("/failed-attempts")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize(SecurityRoles.HAS_ANY_ADMIN)
     public ResponseEntity<List<UserLoginHistory>> getFailedAttempts() {
         return ResponseEntity.ok(loginTrackingService.getRecentFailedAttempts());
     }
 
     @GetMapping("/user/{userId}/failed")
-    @PreAuthorize("hasRole('ADMIN') or #userId == authentication.principal.id")
+    @PreAuthorize(SecurityRoles.HAS_ANY_ADMIN)
     public ResponseEntity<List<UserLoginHistory>> getUserFailedAttempts(@PathVariable Long userId) {
         return ResponseEntity.ok(loginTrackingService.getUserFailedAttempts(userService.findById(userId)));
     }
