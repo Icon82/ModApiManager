@@ -28,11 +28,11 @@ public class WooCommerceController {
      * POST /api/woocommerce/sync/orders
      * Sincronizza TUTTI gli ordini da WooCommerce al database
      */
-    @PostMapping("/sync/orders")
+  /*  @PostMapping("/sync/orders")
     public ResponseEntity<List<OrderDTO>> syncAllOrders() {
         List<OrderDTO> orders = wooCommerceService.syncAllOrders();
         return ResponseEntity.ok(orders);
-    }
+    }*/
 
     /**
      * POST /api/woocommerce/sync/orders/{id}
@@ -67,7 +67,7 @@ public class WooCommerceController {
      */
     @PostMapping("/sync/orders/recent")
     public ResponseEntity<List<OrderDTO>> syncRecentOrders(
-            @RequestParam(defaultValue = "50") int limit) {
+            @RequestParam(defaultValue = "5") int limit) {
         
         List<OrderDTO> orders = wooCommerceService.syncRecentOrders(limit);
         return ResponseEntity.ok(orders);

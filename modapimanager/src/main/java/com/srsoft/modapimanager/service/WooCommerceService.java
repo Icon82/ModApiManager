@@ -161,9 +161,10 @@ public class WooCommerceService {
      * Recupera tutti gli ordini dal DATABASE locale (non da WooCommerce)
      * Restituisce DTO per non esporre entity
      */
+    @Transactional(readOnly = true)
     public List<OrderDTO> getAllOrdersFromDB() {
         logger.info("Recupero tutti gli ordini dal database locale");
-        List<WooCommerceOrder> entities = orderRepository.findAll();
+        List<WooCommerceOrder> entities = orderRepository.findAllWithAllData();
         return orderMapper.toDTOList(entities);
     }
 
@@ -171,9 +172,10 @@ public class WooCommerceService {
      * Recupera un ordine dal DATABASE locale
      * Restituisce DTO per non esporre entity
      */
+    @Transactional(readOnly = true)
     public OrderDTO getOrderFromDB(Long orderId) {
         logger.info("Recupero ordine {} dal database locale", orderId);
-        return orderRepository.findById(orderId)
+        return orderRepository.findByIdWithAllData(orderId)
                 .map(orderMapper::toDTO)
                 .orElse(null);
     }
