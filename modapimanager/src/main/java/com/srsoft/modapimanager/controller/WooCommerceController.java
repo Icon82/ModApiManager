@@ -3,6 +3,9 @@ package com.srsoft.modapimanager.controller;
 
 import com.srsoft.modapimanager.dto.OrderDTO;
 import com.srsoft.modapimanager.service.WooCommerceService;
+
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/woocommerce")
+@RequestMapping("/woocommerce")
+@Tag(name = "41.Manage WooCommerce ", description = "API per la Gestione della comunicazione con WooCommerce")
 public class WooCommerceController {
 
     @Autowired
